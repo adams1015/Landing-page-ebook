@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Alert E-book</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f6f9;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .ebook-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #444;
+    }
+
+    .thank-you {
+      display: none;
+    }
+
+    .thank-you h2 {
+      color: green;
+    }
+
+    .affiliate-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Logo" class="logo">
+    <h1>Credit Alert (E-book)</h1>
+    <p><b>The Easiest Way to Sell to Nigerians</b></p>
+    <img src="selar.jpg" alt="Ebook cover" class="ebook-img">
+    <p>Credit Alert breaks down how Nigerians think, what makes them spend, 
+    and how to make them choose you every single time.</p>
+
+    <!-- Signup Form -->
+    <form id="leadForm">
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <button type="submit">Get Instant Access</button>
+    </form>
+
+    <!-- Thank You Section -->
+    <div class="thank-you" id="thankYou">
+      <h2>✅ Thank You!</h2>
+      <p>Your details have been saved. Click below to get your copy:</p>
+      <a href="https://selar.com/p/i8tz72s84a?affiliate=b88j" class="affiliate-btn" target="_blank">Download E-book</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("leadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Collect form values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      // Google Form details
+      const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScXLSf_HAOEchmzvuDdR0IoPJM8CSA7ZMN5CBvbJMZJgAX_XQ/formResponse?";
+      const nameEntry = "entry.432197637";  // Replace with your actual Name entry ID
+      const emailEntry = "entry.1266633088"; // Replace with your actual Email entry ID
+
+      // Submit to Google Form
+      fetch(formURL + nameEntry + "=" + encodeURIComponent(name) + "&" + emailEntry + "=" + encodeURIComponent(email), {
+        method: "POST",
+        mode: "no-cors"
+      });
+
+      // Show thank you message
+      document.getElementById("leadForm").style.display = "none";
+      document.getElementById("thankYou").style.display = "block";
+    });
+  </script>
+</body>
+</html>
